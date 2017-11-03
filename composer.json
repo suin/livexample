@@ -6,7 +6,8 @@
     "tdd",
     "documentation",
     "example code",
-    "phpunit"
+    "phpunit",
+    "phpunit extension"
   ],
   "type": "library",
   "license": "MIT",
