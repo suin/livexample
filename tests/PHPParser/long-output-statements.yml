@@ -1,0 +1,86 @@
+-
+  - Empty file
+  - ""
+  - ""
+-
+  - Empty code
+  - <?php
+  - ""
+-
+  - Empty output
+  - "<?php //Output:"
+  - ""
+-
+  - Empty output with white space
+  - "<?php //  Output:  "
+  - ""
+-
+  - Output is written in outside of PHP code
+  - "// Output:1 <?php"
+  - ""
+-
+  - One line output
+  - "<?php // Output:1"
+  - "1"
+-
+  - Three line output
+  - |
+    <?php
+    //Output:
+    //1
+    //2
+    //3
+  - |
+    1
+    2
+    3
+-
+  - Three line output with head whitespace
+  - |
+    <?php
+    // Output:
+    // 1
+    // 2
+    // 3
+  - |
+    1
+    2
+    3
+-
+  - Three line output (first line is written just after Output keywords)
+  - |
+    <?php
+    // Output: 1
+    // 2
+    // 3
+  - |
+    1
+    2
+    3
+-
+  - Two output blocks
+  - |
+    <?php
+    // Output: 1
+    // Output: 2
+  - |
+    1
+    2
+-
+  - Distinguishes a just comment from output statements
+  - |
+    <?php
+    // comment 1
+    // Output: A
+    // B
+
+    // comment 2
+  - |
+    A
+    B
+-
+  - Output statement after calling function in the same line
+  - |
+    <?php
+    echo 'hello'; // Output: hello
+  - hello

@@ -1,0 +1,27 @@
+version: '3'
+services:
+  php71: &base
+    build: {dockerfile: docker/php71/Dockerfile, context: .}
+    command: composer test-in-docker
+    volumes:
+      - .:/app
+
+  php70:
+    <<: *base
+    build: {dockerfile: docker/php70/Dockerfile, context: .}
+
+  php56:
+    <<: *base
+    build: {dockerfile: docker/php56/Dockerfile, context: .}
+
+  php55:
+    <<: *base
+    build: {dockerfile: docker/php55/Dockerfile, context: .}
+
+  php54:
+    <<: *base
+    build: {dockerfile: docker/php54/Dockerfile, context: .}
+
+  php53:
+    <<: *base
+    build: {dockerfile: docker/php53/Dockerfile, context: .}

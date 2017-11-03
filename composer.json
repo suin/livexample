@@ -1,0 +1,40 @@
+{
+  "name": "suin/livexample",
+  "description": "Ensures your example codes works well by unit testing.",
+  "keywords": [
+    "unit testing",
+    "tdd",
+    "documentation",
+    "example code",
+    "phpunit"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "suin",
+      "email": "suinyeze@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3",
+    "phpunit/phpunit": ">=4.8.36 <7.0"
+  },
+  "require-dev": {
+    "symfony/yaml": ">=2.8 <4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Livexample\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test-in-docker": "phpunit --bootstrap vendor/autoload.php --coverage-text",
+    "configure-commit-template": "git config --add commit.template .gitmessage"
+  }
+}
