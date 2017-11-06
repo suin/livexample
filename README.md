@@ -88,9 +88,13 @@ There are two syntax for assertion:
 
 ```php
 echo 1; // Output: 1
+```
 
+```php
 echo "hello"; //=> hello
+```
 
+```php
 var_dump([1, 2, 3]);
 // Output:
 // array(3) {
