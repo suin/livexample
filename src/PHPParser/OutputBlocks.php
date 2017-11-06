@@ -20,6 +20,16 @@ final class OutputBlocks
     }
 
     /**
+     * @internal \Livexample\PHPParser
+     * @param Output $output
+     */
+    public function addBlock(Output $output)
+    {
+        $this->outputBlocks[] = $output;
+    }
+
+    /**
+     * @internal \Livexample\PHPParser
      * @param string $line
      */
     public function addLineToNewBlock($line)
@@ -41,6 +51,7 @@ final class OutputBlocks
     }
 
     /**
+     * @internal \Livexample\PHPParser
      * @param string $line
      */
     public function addLineToPreviousBlock($line)
@@ -51,8 +62,16 @@ final class OutputBlocks
     /**
      * @return string[]
      */
-    public function toArray()
+    private function toArray()
     {
         return array_map('strval', $this->outputBlocks);
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return implode("\n", $this->toArray());
     }
 }

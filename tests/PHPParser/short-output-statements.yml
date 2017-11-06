@@ -58,13 +58,12 @@
     2
     3
 -
-  - Two output blocks
+  - When two output provided last one is used
   - |
     <?php
     // => 1
     // => 2
   - |
-    1
     2
 -
   - Distinguishes a just comment from output statements

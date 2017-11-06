@@ -12,21 +12,22 @@ final class Parser
      */
     public static function getOutput($code)
     {
-        $blocks = new OutputBlocks();
         $state = new State();
         $tokens = Lexer::tokenize($code);
+        $output = new Output();
 
         foreach ($tokens as $token) {
             if ($token->isComment() && $token->isOutput()) {
-                $blocks->addLineToNewBlock($token->commentBody());
+                $output = new Output();
+                $output->addLine($token->commentBody());
                 $state->insideOfOutput();
             } elseif ($token->isComment() && $state->isInsideOfOutput()) {
-                $blocks->addLineToPreviousBlock($token->commentBody());
+                $output->addLine($token->commentBody());
             } else {
                 $state->outsideOfOutput();
             }
         }
 
-        return implode("\n", $blocks->toArray());
+        return (string)$output;
     }
 }

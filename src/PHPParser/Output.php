@@ -7,6 +7,7 @@ final class Output
     private $output = '';
 
     /**
+     * @internal \Livexample\PHPParser
      * @param string $line
      */
     public function addLine($line)
