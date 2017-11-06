@@ -29,6 +29,11 @@
       "Livexample\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Livexample\\": "tests/"
+    }
+  },
   "minimum-stability": "stable",
   "config": {
     "sort-packages": true
