@@ -10,6 +10,7 @@ set -eux
   case $PHP_VERSION in
     5.2.*|5.3.*) XDEBUG=xdebug-2.2.7;;
           5.4.*) XDEBUG=xdebug-2.4.1;;
+          7.2.*) XDEBUG=xdebug-2.6.0alpha1;;
   	          *) XDEBUG=xdebug;;
   esac
   pecl install $XDEBUG
