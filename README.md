@@ -119,6 +119,14 @@ var_dump(new stdClass);
 // }
 ```
 
+## Tips: run an example script with `php` command
+
+```
+php -d auto_prepend_file=vendor/autoload.php \
+    -d xdebug.overload_var_dump=0 \
+    example/simple-usage.php
+```
+
 ## Why supports PHP 5.3 in 2017?
 
 The official support for PHP 5.3 has ended, however, RHEL/CentOS keeps supporting PHP 5.3 even in 2017. The old PHP environments still remain in the running service today. Livexample is also suppoed to be used for refactoring such old environments.
