@@ -4,8 +4,8 @@ namespace Livexample\PHPLexer;
 
 final class CommentWithOutput extends Token
 {
-    const LONG_OUTPUT_TOKEN_PATTERN = '|^//\s*Output:|';
-    const SHORT_OUTPUT_TOKEN_PATTERN = '|^//\s*=>|';
+    const LONG_OUTPUT_TOKEN_PATTERN = '|^//(?<indent> *)Output:|';
+    const SHORT_OUTPUT_TOKEN_PATTERN = '|^//(?<indent> *)=>|';
 
     /**
      * @param string|array $token
@@ -49,22 +49,6 @@ final class CommentWithOutput extends Token
     }
 
     /**
-     * @return bool
-     */
-    public function isComment()
-    {
-        return true;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isOutput()
-    {
-        return true;
-    }
-
-    /**
      * @return string
      */
     public function commentBody()
@@ -74,6 +58,23 @@ final class CommentWithOutput extends Token
             return preg_replace(self::LONG_OUTPUT_TOKEN_PATTERN, '', $t);
         } elseif (self::containsShortOutputToken($t)) {
             return preg_replace(self::SHORT_OUTPUT_TOKEN_PATTERN, '', $t);
+        } else {
+            throw new \LogicException("Invalid output format: $t");
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function indent()
+    {
+        $t = $this->token();
+        if (self::containsLongOutputToken($t)) {
+            preg_match(self::LONG_OUTPUT_TOKEN_PATTERN, $t, $matches);
+            return strlen($matches['indent']);
+        } elseif (self::containsShortOutputToken($t)) {
+            preg_match(self::SHORT_OUTPUT_TOKEN_PATTERN, $t, $matches);
+            return strlen($matches['indent']);
         } else {
             throw new \LogicException("Invalid output format: $t");
         }

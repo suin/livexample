@@ -38,7 +38,7 @@ class ExampleTestCaseTest extends \PHPUnit\Framework\TestCase
         );
         $testResult = $testSuite->run();
 //        $this->printResult($testResult);
-        $this->assertSame(2, $testResult->count());
+        $this->assertSame(3, $testResult->count());
         $this->assertSame(0, $testResult->failureCount());
         $this->assertSame(0, $testResult->errorCount());
         $this->assertSame(0, $testResult->skippedCount());

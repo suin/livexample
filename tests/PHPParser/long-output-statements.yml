@@ -83,3 +83,50 @@
     <?php
     echo 'hello'; // Output: hello
   - hello
+-
+  - Keep indentation 1
+  - |
+    <?php
+    // Output:
+    // 1
+    //  2
+    //   3
+  - |
+    1
+     2
+      3
+-
+  - Keep indentation 2
+  - |
+    <?php
+    //  Output:
+    //  1
+    //   2
+    //    3
+  - |
+    1
+     2
+      3
+-
+  - Keep indentation 1 (first line is written just after Output keywords)
+  - |
+    <?php
+    // Output:1
+    //  2
+    //   3
+  - |
+    1
+     2
+      3
+-
+  - Blank line
+  - |
+    <?php
+    // Output:
+    // Line1
+    //
+    // Line2
+  - |
+    Line1
+
+    Line2

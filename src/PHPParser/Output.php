@@ -4,7 +4,28 @@ namespace Livexample\PHPParser;
 
 final class Output
 {
-    private $output = '';
+    /**
+     * @var string[]
+     */
+    private $lines = array();
+
+    /**
+     * @var int
+     */
+    private $indent;
+
+    /**
+     * @param int $indent
+     * @param string $output
+     */
+    public function __construct($indent, $output)
+    {
+        $this->indent = $indent;
+        $output = trim($output);
+        if (strlen($output) > 0) {
+            $this->lines[] = $output;
+        }
+    }
 
     /**
      * @internal \Livexample\PHPParser
@@ -12,8 +33,11 @@ final class Output
      */
     public function addLine($line)
     {
-        // To normalize line break and remove whitespaces around text.
-        $this->output = trim($this->output . "\n" . $line);
+        // Remove indent space.
+        $line = preg_replace('/^ {' . $this->indent . '}/', '', $line);
+
+        // To normalize line break.
+        $this->lines[] = rtrim($line, "\r\n");
     }
 
     /**
@@ -21,7 +45,7 @@ final class Output
      */
     public function getOutput()
     {
-        return $this->output;
+        return implode("\n", $this->lines);
     }
 
     /**

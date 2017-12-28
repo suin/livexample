@@ -25,7 +25,7 @@ abstract class ExampleTestCase extends TestCase
     {
         if (extension_loaded('xdebug') && xdebug_is_enabled()) {
             $this->xDebugOverloadVarDump = ini_get('xdebug.overload_var_dump');
-            ini_set('xdebug.overload_var_dump', 0);
+            ini_set('xdebug.overload_var_dump', 0); // This doesn't work PHP 5.3(xDebug 2.3.0) or lower.
         }
     }
 
@@ -52,7 +52,7 @@ abstract class ExampleTestCase extends TestCase
         /** @noinspection PhpIncludeInspection */
         require $filename;
         $actualOutput = trim(ob_get_clean());
-        $this->assertEquals($expectedOutput, $actualOutput);
+        $this->assertStringMatchesFormat($expectedOutput, $actualOutput);
     }
 
     /**

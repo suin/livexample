@@ -12,28 +12,4 @@ final class NonComment extends Token
     {
         return new self($token);
     }
-
-    /**
-     * @return bool
-     */
-    public function isComment()
-    {
-        return false;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isOutput()
-    {
-        return false;
-    }
-
-    /**
-     * @return string
-     */
-    public function commentBody()
-    {
-        throw new \LogicException('Non-comment token has not comment body');
-    }
 }

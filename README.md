@@ -107,6 +107,18 @@ var_dump([1, 2, 3]);
 // }
 ```
 
+## Tips: `var_dump($object)`
+
+The `var_dump()` function prints object identifiers, which is `#some-number` next to the class name. Since the identifiers depend on execution environment, you can not hard-code it in the `Output:` statement. Instead of hard-coding the identifier, you may use a placeholder `%d` for number:
+
+```php
+<?php
+var_dump(new stdClass);
+// Output:
+// object(stdClass)#%d (0) {
+// }
+```
+
 ## Why supports PHP 5.3 in 2017?
 
 The official support for PHP 5.3 has ended, however, RHEL/CentOS keeps supporting PHP 5.3 even in 2017. The old PHP environments still remain in the running service today. Livexample is also suppoed to be used for refactoring such old environments.

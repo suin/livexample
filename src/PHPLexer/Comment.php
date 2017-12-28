@@ -17,26 +17,10 @@ final class Comment extends Token
     }
 
     /**
-     * @return bool
-     */
-    public function isComment()
-    {
-        return true;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isOutput()
-    {
-        return false;
-    }
-
-    /**
      * @return string
      */
     public function commentBody()
     {
-        return preg_replace('|^//\s*|', '', $this->token());
+        return preg_replace('|^//|', '', $this->token());
     }
 }

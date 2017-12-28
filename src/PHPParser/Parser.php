@@ -2,6 +2,8 @@
 
 namespace Livexample\PHPParser;
 
+use Livexample\PHPLexer\Comment;
+use Livexample\PHPLexer\CommentWithOutput;
 use Livexample\PHPLexer\Lexer;
 
 final class Parser
@@ -12,19 +14,18 @@ final class Parser
      */
     public static function getOutput($code)
     {
-        $state = new State();
+        $insideOfOutput = false;
         $tokens = Lexer::tokenize($code);
-        $output = new Output();
+        $output = '';
 
         foreach ($tokens as $token) {
-            if ($token->isComment() && $token->isOutput()) {
-                $output = new Output();
-                $output->addLine($token->commentBody());
-                $state->insideOfOutput();
-            } elseif ($token->isComment() && $state->isInsideOfOutput()) {
+            if ($token instanceof CommentWithOutput) {
+                $output = new Output($token->indent(),  $token->commentBody());
+                $insideOfOutput = true;
+            } elseif ($token instanceof Comment && $insideOfOutput) {
                 $output->addLine($token->commentBody());
             } else {
-                $state->outsideOfOutput();
+                $insideOfOutput = false;
             }
         }
 
