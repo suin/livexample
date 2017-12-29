@@ -58,14 +58,6 @@
     2
     3
 -
-  - When two output provided last one is used
-  - |
-    <?php
-    // Output: 1
-    // Output: 2
-  - |
-    2
--
   - Distinguishes a just comment from output statements
   - |
     <?php
@@ -130,3 +122,17 @@
     Line1
 
     Line2
+-
+  - Two output statements in a file
+  - |
+    <?php
+    echo 1, PHP_EOL;
+    // Output:
+    // 1
+
+    echo 2, PHP_EOL;
+    // Output:
+    // 2
+  - |
+    1
+    2

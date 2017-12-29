@@ -15,12 +15,13 @@ final class Parser
     public static function getOutput($code)
     {
         $insideOfOutput = false;
+        $output = null;
+        $outputs = array();
         $tokens = Lexer::tokenize($code);
-        $output = '';
-
         foreach ($tokens as $token) {
             if ($token instanceof CommentWithOutput) {
-                $output = new Output($token->indent(),  $token->commentBody());
+                $output = new Output($token->indent(), $token->commentBody());
+                $outputs[] = $output;
                 $insideOfOutput = true;
             } elseif ($token instanceof Comment && $insideOfOutput) {
                 $output->addLine($token->commentBody());
@@ -28,7 +29,6 @@ final class Parser
                 $insideOfOutput = false;
             }
         }
-
-        return (string)$output;
+        return implode("\n", $outputs);
     }
 }
