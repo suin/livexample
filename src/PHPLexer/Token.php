@@ -10,15 +10,11 @@ abstract class Token
     private $token;
 
     /**
-     * @param string|array $token
+     * @param array $token
      */
-    final protected function __construct($token)
+    final protected function __construct(array $token)
     {
-        if (is_array($token)) {
-            $this->token = $token[1];
-        } else {
-            $this->token = $token;
-        }
+        $this->token = $token[1];
     }
 
     /**

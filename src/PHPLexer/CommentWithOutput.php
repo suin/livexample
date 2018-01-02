@@ -8,14 +8,13 @@ final class CommentWithOutput extends Token
     const SHORT_OUTPUT_TOKEN_PATTERN = '|^//(?<indent> *)=>|';
 
     /**
-     * @param string|array $token
+     * @param array $token
      * @return CommentWithOutput|null
      */
-    public static function create($token)
+    public static function create(array $token)
     {
         return (
-            is_array($token)
-            && $token[0] === T_COMMENT
+            $token[0] === T_COMMENT
             && self::containsOutputToken($token[1])
         ) ? new self($token) : null;
     }

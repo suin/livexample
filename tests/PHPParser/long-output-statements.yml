@@ -136,3 +136,19 @@
   - |
     1
     2
+-
+  - Output satement in indented comment
+  - |
+    <?php
+        // Output:
+        // 1
+            // Output:
+            // 2
+                // Output:
+                // 3
+
+                // This is just a comment
+  - |
+    1
+    2
+    3

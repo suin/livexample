@@ -5,10 +5,10 @@ namespace Livexample\PHPLexer;
 final class NonComment extends Token
 {
     /**
-     * @param string|array $token
+     * @param array $token
      * @return NonComment
      */
-    public static function create($token)
+    public static function create(array $token)
     {
         return new self($token);
     }
