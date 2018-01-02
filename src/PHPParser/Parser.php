@@ -17,16 +17,22 @@ final class Parser
         $insideOfOutput = false;
         $output = null;
         $outputs = array();
-        $tokens = Lexer::tokenize($code);
-        foreach ($tokens as $token) {
-            if ($token instanceof CommentWithOutput) {
-                $output = new Output($token->indent(), $token->commentBody());
-                $outputs[] = $output;
-                $insideOfOutput = true;
-            } elseif ($token instanceof Comment && $insideOfOutput) {
-                $output->addLine($token->commentBody());
-            } else {
+        $lines = Lexer::tokenize($code);
+        foreach ($lines as $line) {
+            if ($line->isEmpty()) {
                 $insideOfOutput = false;
+                continue;
+            }
+            foreach ($line->tokens() as $token) {
+                if ($token instanceof CommentWithOutput) {
+                    $output = new Output($token->indent(), $token->commentBody());
+                    $outputs[] = $output;
+                    $insideOfOutput = true;
+                } elseif ($token instanceof Comment && $insideOfOutput) {
+                    $output->addLine($token->commentBody());
+                } else {
+                    $insideOfOutput = false;
+                }
             }
         }
         return implode("\n", $outputs);

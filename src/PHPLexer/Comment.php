@@ -5,15 +5,12 @@ namespace Livexample\PHPLexer;
 final class Comment extends Token
 {
     /**
-     * @param string|array $token
+     * @param array $token
      * @return Comment|null
      */
-    public static function create($token)
+    public static function create(array $token)
     {
-        return (
-            is_array($token)
-            && $token[0] === T_COMMENT
-        ) ? new self($token) : null;
+        return $token[0] === T_COMMENT ? new self($token) : null;
     }
 
     /**
