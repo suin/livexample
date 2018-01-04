@@ -1,6 +1,6 @@
 # Livexample
 
-[![travis-ci-badge]][travis-ci] [![packagist-dt-badge]][packagist]
+[![travis-ci-badge]][travis-ci] [![packagist-dt-badge]][packagist] [![license-badge]][license] [![release-version-badge]][packagist] ![php-version-badge]
 
 This is a documentation oriented testing framework for from PHP 5.3 to 7.x. Its purpose is ensure your example codes works by unit testing. Inspired by [Golang testing "Examples"](https://golang.org/pkg/testing/#hdr-Examples).
 
@@ -131,24 +131,6 @@ php -d auto_prepend_file=vendor/autoload.php \
 
 The official support for PHP 5.3 has ended, however, RHEL/CentOS keeps supporting PHP 5.3 even in 2017. The old PHP environments still remain in the running service today. Livexample is also suppoed to be used for refactoring such old environments.
 
-## Testing Livexample
-
-### Running tests
-
-``` bash
-composer test
-```
-
-### Running tests through PHP 5.3 ~ 7.1
-
-```
-docker-compose up
-```
-
-## License
-
-This library is licensed under the MIT license. Please see [LICENSE](LICENSE.md) for more details.
-
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more details.
@@ -163,3 +145,7 @@ Please fix my English 😂.
 [travis-ci-badge]: https://img.shields.io/travis/suin/livexample.svg?style=flat-square
 [packagist]: https://packagist.org/packages/suin/livexample
 [packagist-dt-badge]: https://img.shields.io/packagist/dt/suin/livexample.svg?style=flat-square
+[license]: LICENSE.md
+[license-badge]: https://img.shields.io/github/license/suin/livexample.svg?style=flat-square
+[php-version-badge]: https://img.shields.io/packagist/php-v/suin/livexample.svg?style=flat-square
+[release-version-badge]: https://img.shields.io/packagist/v/suin/livexample.svg?style=flat-square&label=release
